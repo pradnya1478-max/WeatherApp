@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weathervane</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <h1 class="brand">Weathervane</h1>
+      <div class="tools">
+        <div class="seg" role="group" aria-label="Units">
+          <button type="button" data-unit="metric" aria-pressed="true">°C</button>
+          <button type="button" data-unit="imperial" aria-pressed="false">°F</button>
+        </div>
+        <button type="button" id="locate" class="icon-btn" aria-label="Use my location" title="Use my location">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <form id="search-form" role="search" autocomplete="off">
+      <label for="q" class="sr">Search for a city</label>
+      <input id="q" type="search" placeholder="Search for a city" enterkeyhint="search" spellcheck="false">
+      <ul id="suggestions" aria-label="Matching places" hidden></ul>
+    </form>
+
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <main id="main" aria-busy="true">
+      <section id="current" aria-label="Current conditions"></section>
+
+      <section class="block" aria-labelledby="h-hourly">
+        <h2 id="h-hourly">Next 24 hours</h2>
+        <ol id="hourly" class="hourly"></ol>
+      </section>
+
+      <section class="block" aria-labelledby="h-daily">
+        <h2 id="h-daily">7-day forecast</h2>
+        <ol id="daily" class="daily"></ol>
+      </section>
+    </main>
+
+    <footer class="foot">
+      Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0)
+    </footer>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
